@@ -1,4 +1,71 @@
 baseURL = "http://therealplato.github.io/"
 languageCode = "en-us"
 title = "therealplato.com (soon™)"
-theme = "cactus-plus"
+theme = "hugo-theme-cactus-plus"
+# Enter your tracking code to enable Google Analytics
+hasCJKLanguage = false
+
+[params]
+	name = "@therealplato"
+	description = "words about things that i think about"
+	bio = "I crossed the United States spending only Bitcoin in 2012. Now I'm a golang developer for [movio.co](https://movio.co) in Auckland."
+	# Enter optionally your twitter account
+	twitter = "@therealplato"
+	enableRSS = false
+
+	# Disqus comment
+	disqusShortname = "your_disqus_short_name"
+	# Disable disqus comments by set `enableDisqus = "false"`
+	enableDisqus = false
+
+	# Duoshuo comment
+	duoshuoShortname = "your_duoshuo_short_name"
+	# Disable duoshuo comments by set `enableDuoshuo = "false"`
+	enableDuoshuo = false
+
+	enableGithubIssuesTips = false
+
+	# Enable googleAnalytics
+	enableGoogleAnalytics = false
+
+	# Enable baiduAnalytics
+	enableBaiduAnalytics = false
+	# Baidu Tongji Code
+	baiduAnalytics = 'your_baidu_tongji_code'
+
+	# Add custom assets with their paths relative to the static folder
+	customCSS = []
+	customJS  = []
+
+	# The variables below are optionally too and can be used to
+	# translate or customize each string of the theme.
+
+	# Navigation links
+	home = ""
+	about = ""
+	archive = ""
+	subscribe = ""
+	tags = ""
+	# Pagination links
+	olderPosts = ""
+	newerPosts = ""
+	readMore = ""
+	copyright = ""
+	# Sharing options and author information in posts
+	aboutAuthor = ""
+	tweet = ""
+	share = ""
+	# 404 page
+	title404 = "wut"
+	subtitle404 = "i dont even"
+
+	# Choose a font for the social icons in the footer. Either "mono-social" or "font-awesome"
+	iconFont = "font-awesome"
+  # The social icons can be styled differently if you use mono as font - circle, rounded, or empty
+  socialIconStyle = ""
+
+
+# Add additional social link entries underneath
+[social]
+  twitter-square = "https://twitter.com/therealplato"
+  github-square = "https://github.com/therealplato"
