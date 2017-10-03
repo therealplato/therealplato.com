@@ -1,3 +1,4 @@
 #!/bin/sh
+P=$(pwd)
 rm -rf docs
-hugo -c hugosite -d docs
+hugo -s hugosite -d $P/docs
