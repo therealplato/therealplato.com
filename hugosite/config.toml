@@ -1,8 +1,7 @@
-baseURL = "http://therealplato.github.io/"
+baseURL = "https://therealplato.github.io/"
 languageCode = "en-us"
-title = "therealplato.com (soon™)"
+title = "therealplato.com"
 theme = "hugo-theme-cactus-plus"
-# Enter your tracking code to enable Google Analytics
 hasCJKLanguage = false
 
 [params]
