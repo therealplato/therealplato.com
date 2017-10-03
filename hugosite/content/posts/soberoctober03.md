@@ -1,6 +1,6 @@
 ---
 title: "#soberoctober day 3: blog it"
-date: 2017-10-02T23:00:00Z
+date: 2017-10-03T23:00:00Z
 draft: false
 ---
 
