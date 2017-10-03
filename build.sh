@@ -1,4 +1,5 @@
 #!/bin/sh
 P=$(pwd)
-rm -rf docs
-hugo -s hugosite -d $P/docs
+OUT=$P/../therealplato.github.io
+rm -rf $OUT/*
+hugo -s hugosite -d $OUT
