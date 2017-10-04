@@ -10,7 +10,7 @@ hasCJKLanguage = false
 	bio = "I crossed the United States spending only Bitcoin in 2012. Now I'm a golang developer for [movio.co](https://movio.co) in Auckland."
 	# Enter optionally your twitter account
 	twitter = "@therealplato"
-	enableRSS = false
+	enableRSS = true
 
 	# Disqus comment
 	disqusShortname = "your_disqus_short_name"
