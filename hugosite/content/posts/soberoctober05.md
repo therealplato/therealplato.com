@@ -3,6 +3,25 @@ title: "Soberoctober05"
 date: 2017-10-04T21:23:04+13:00
 draft: true
 ---
+<script type="text/javascript">
+document.addEventListener("DOMContentLoaded", function() {
+  $.get("https://5b567rkzxe.execute-api.us-east-2.amazonaws.com/prod/com-therealplato-counter?TableName=com-therealplato-counter",
+  function(data, status){
+    if(status != "success") { return }
+		$("#counter-button").text(data.n)
+	})
+
+	$("#counter-button").click(function(){
+		$.post("https://5b567rkzxe.execute-api.us-east-2.amazonaws.com/prod/com-therealplato-counter?TableName=com-therealplato-counter", {}, function(data, status){
+			if(status != "success") { return }
+			$("#counter-button").text(data.n)
+		});
+	}); 
+})
+</script>
+
+<span>Button has been clicked</span>&nbsp;<button class="counter" id="counter-button">...</button>&nbsp;<span>times</span>
+
 
  
 While trying to use two finger scrolling, I observed this entertaining behavior:
