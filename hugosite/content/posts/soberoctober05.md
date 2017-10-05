@@ -1,7 +1,7 @@
 ---
 title: "#soberoctober day 5 - JIT"
-date: 2017-10-05T23:47:00+13:00
-draft: true
+date: 2017-10-05T23:55:00+13:00
+draft: false
 ---
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
