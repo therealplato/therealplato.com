@@ -1,0 +1,19 @@
+---
+title: "Scratch2"
+date: 2017-10-05T23:53:41+13:00
+draft: true
+---
+
+
+
+```sh
+ ~ Ω batt  
+0.56
+
+ ~ Ω which batt
+batt () {
+        X=$(cat /sys/class/power_supply/BAT0/energy_now) 
+        Y=$(cat /sys/class/power_supply/BAT0/energy_full) 
+        python2 -c "z=$X/$Y.; print('%.2f' % z)"
+}
+```
