@@ -18,3 +18,5 @@ Things I learned from the barbecue:
 * Some green chilis are hot
 
 If you wish your company did sweet barbecues and you're interested in the marketing side of the movie business, you may want to check out Movio's [open positions](https://movio.co/en/career/).
+
+<video src="/video/noodlemaking.webm" autoplay loop preload="none"></video>
