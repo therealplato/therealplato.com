@@ -1,5 +1,5 @@
 ---
-title: "#soberoctober 06: "
+title: "#soberoctober day 6: 剁椒鱼头BBQ"
 date: 2017-10-06T21:21:27+13:00
 draft: true
 ---

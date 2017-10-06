@@ -1,5 +1,5 @@
 ---
-title: "#soberoctober day 5 - JIT"
+title: "#soberoctober day 5:  JIT"
 date: 2017-10-05T23:55:00+13:00
 draft: false
 ---
