@@ -1,7 +1,7 @@
 ---
 title: "#soberoctober day 6: 剁椒鱼头BBQ"
 date: 2017-10-06T21:21:27+13:00
-draft: true
+draft: false
 ---
 
 One Friday per month, Movio has a barbecue, with responsibility rotating among squads. Today it was Red Squad's turn and it was good.

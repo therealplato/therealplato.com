@@ -17,3 +17,11 @@ batt () {
         python2 -c "z=$X/$Y.; print('%.2f' % z)"
 }
 ```
+
+
+I believe humans are naturally tribal. We evolved from tribal primates; [Dunbar's number](https://duckduckgo.com/?q=dunbar's+number) suggests that our brains are wired to live and cooperate in groups of no more than 150 humans. Tribes are their own support networks. They work towards shared purposes and have their own [rulescapes](https://anarplex.net/hosted/files/lotnv/rulescape.html). They punish or expunge those members who disagree with the tribe's
+rules.
+
+Back in the day, that usually meant death. Other tribes were far away, didn't have extra food to share and didn't want troublemakers anyway.
+I heard a hypothesis via Reggie Watts that fear of public speaking is a leftover from these tribal days - you'd only address the whole tribe
+if you were the chief, or if you were being kicked out and defending your actions.

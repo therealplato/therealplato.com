@@ -5,7 +5,7 @@ draft: false
 ---
 
 
-Keep catching myself reaching for my e-cig, locked far away. Bought seven types of gum to try instead. "5 Watermelon" package indicates a
+Keep catching myself reaching for my e-cig, locked far away. Bought seven types of gum to try instead. "5 Watermelon" package indicates 
 eating the whole pack results in a laxative effect, neat! Considered buying some nicotine-free ecig liquid but that feels like cheating...
 
 ## Today's Achievements
@@ -22,5 +22,6 @@ eating the whole pack results in a laxative effect, neat! Considered buying some
 
 ### Arch wishlist:
 * Show bandwidth use, wifi state, battery level in system tray
-* Make my clock update DST automatically.
+* Make my clock update DST automatically.  
+  (edit: sorted after a locale switch and reboot)
 * Volume/mute hotkeys

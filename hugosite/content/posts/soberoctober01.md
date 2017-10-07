@@ -24,9 +24,9 @@ Video games are disallowed.
 Challenge begins 2017-10-01 00:00:00 and ends 2017-11-01 00:00:00, New Zealand time.
 
 ## Today's Achievements
-I identified why I smell mold at night - the underside of my wood-slatted futon
-frame is covered in mold. It joins my moldy clothing, keyboard, oculus rift and
-passport in the ranks of "shit damaged by my moldy Auckland flat."
+I identified why I smell mold at night - the underside of my wood-slatted futon frame is [covered in mold](/moldyframe.jpg). It joins my
+moldy clothing, keyboard, oculus rift and passport in the ranks of "shit damaged by my moldy Auckland
+flat."
 
 I continued the Sisyphean task of configuring my Arch Linux machine. Previously
 I was using [zeit/hyper](zeit/hyper) but it irritatingly intercepts `^R` and
