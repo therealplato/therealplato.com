@@ -1,12 +1,36 @@
 ---
-title: "#soberoctober day 10: svg ftw"
+title: "#soberoctober day 10: svg ftw (edit: not yet)"
 date: 2017-10-10T21:27:08+13:00
-draft: true
+draft: false
 ---
 
 Long day today, leaving me with no time to [dive deep](https://www.youtube.com/results?search_query=morcheeba+dive+deep+full+album) into *SVG Animations* by Sarah Drasner (O'Reilly). Copyright 2017 Sarah Drasner, 978-1-491-93970-3.
 
 Let's see what I can get done with an hour and some lipsum...
+
+<hr>
+
+... Not very far. My objective was to make an arrow that starts pointing down and animates to point up as you scroll
+down the page. 
+
+After conceding that was not a newbie task, I just looped the animation.
+
+I don't see a way to set an infinite repeat count with the `animation:` css shorthand.
+
+ I first tried animating the `x2, y2` properties of the arrowhead line segments, but
+apparently that's not a thing and I need to use `transform` CSS property or `transform` property of an SVG element.
+I did not find any examples of animating the latter.
+
+As you can see, I haven't figured out how to chain `rotate` and `translate`.
+
+I did learn about the `viewBox` property and have used it to place my SVG's origin at the center, which made a huge
+improvement.
+
+Almost all docs I've found give up and use a JS library. It would be nice to avoid that.
+
+Maybe I'll learn a correct way to do it and update this post?
+
+<hr>
 
 <script>
 </script>
@@ -23,10 +47,6 @@ Let's see what I can get done with an hour and some lipsum...
 }
 .head-left {
   animation: head-left 2s 2s 999 alternate ease-in-out forwards;
-/*  transform-origin: 50% 50%;*/
-}
-.head-right {
-  animation: head-right 2s 2s 999 alternate ease-in-out forwards;
 }
 @keyframes color-animation {
   0% {
@@ -38,30 +58,18 @@ Let's see what I can get done with an hour and some lipsum...
 }
 @keyframes head-left {
   0% {
-/*    transform:rotate(-45deg) translateY(-40px) ; */
-    transform:rotate(-45deg 30 40); 
+    transform:rotate(45deg) translateY(40px) ; 
   }
   100% {
-    /*transform:rotate(45deg) translateY(40px) ;*/
-    transform:rotate(45deg 30 40);
+    transform:rotate(-45deg) translateY(-40px) ;
   }
 }
-/*
-@keyframes head-right {
-  0% {
-    transform:translateY(0) rotate(0) ;
-  }
-  100% {
-    transform:rotate(90deg) translateY(-80px) ;
-  }
-}
-*/
 </style>
 <svg id="slider" viewBox='-40 -40 80 80'>
   <g class="arrow" fill="none" stroke="black">
 		<line x1="0" y1="-40" x2="0" y2="40" />
 		<line class="head-left" x1="0" y1="0" x2="-20" y2="0" />
-		<line class="head-right" x1="0" y1="0" x2="20" y2="0" />
+		<line class="head-right" x1="0" y1="40" x2="20" y2="20" />
 	</g>
 </svg>
 
