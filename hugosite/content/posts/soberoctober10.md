@@ -15,25 +15,39 @@ Let's see what I can get done with an hour and some lipsum...
 	position: fixed;
   top: 80px;
   right: 50px;
+	width: 80px;
+	height: 80px;
 }
 .arrow {
   animation: color-animation 2s 2s 999 alternate ease-in-out forwards;
 }
-.head {
-  animation: head-animation 2s 2s 999 alternate ease-in-out forwards;
+.head-left {
+  animation: head-left 2s 2s 999 alternate ease-in-out forwards;
+/*  transform-origin: 50% 50%;*/
+}
+.head-right {
+  animation: head-right 2s 2s 999 alternate ease-in-out forwards;
 }
 @keyframes color-animation {
   0% {
-    stroke: black
-  }
-  50% {
-    stroke: #800000
+    stroke: black;
   }
   100% {
-    stroke: red
+    stroke: red;
   }
 }
-@keyframes head-animation {
+@keyframes head-left {
+  0% {
+/*    transform:rotate(-45deg) translateY(-40px) ; */
+    transform:rotate(-45deg 30 40); 
+  }
+  100% {
+    /*transform:rotate(45deg) translateY(40px) ;*/
+    transform:rotate(45deg 30 40);
+  }
+}
+/*
+@keyframes head-right {
   0% {
     transform:translateY(0) rotate(0) ;
   }
@@ -41,12 +55,13 @@ Let's see what I can get done with an hour and some lipsum...
     transform:rotate(90deg) translateY(-80px) ;
   }
 }
+*/
 </style>
-<svg id="slider">
+<svg id="slider" viewBox='-40 -40 80 80'>
   <g class="arrow" fill="none" stroke="black">
-		<line x1="40" y1="0" x2="40" y2="80" />
-		<line class="head" x1="40" y1="80" x2="20" y2="60" />
-		<line class="head" x1="40" y1="80" x2="60" y2="60" />
+		<line x1="0" y1="-40" x2="0" y2="40" />
+		<line class="head-left" x1="0" y1="0" x2="-20" y2="0" />
+		<line class="head-right" x1="0" y1="0" x2="20" y2="0" />
 	</g>
 </svg>
 
