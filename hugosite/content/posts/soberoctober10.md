@@ -16,12 +16,25 @@ Let's see what I can get done with an hour and some lipsum...
   top: 80px;
   right: 50px;
 }
+.arrow {
+  animation: color-animation 2s 2s 3 alternate ease-in-out forwards;
+}
+@keyframes color-animation {
+0% {
+  stroke: black
+}
+50% {
+  stroke: #800000
+}
+100% {
+  stroke: red
+}
 </style>
 <svg id="slider">
-  <g fill="none" stroke="black">
-		<line stroke="black" x1="40" y1="10" x2="40" y2="80" />
-		<line stroke="black" x1="40" y1="80" x2="20" y2="60" />
-		<line stroke="black" x1="40" y1="80" x2="60" y2="60" />
+  <g class="arrow" fill="none" stroke="black">
+		<line x1="40" y1="10" x2="40" y2="80" />
+		<line x1="40" y1="80" x2="20" y2="60" />
+		<line x1="40" y1="80" x2="60" y2="60" />
 	</g>
 </svg>
 
