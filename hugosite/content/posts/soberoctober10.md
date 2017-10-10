@@ -17,24 +17,36 @@ Let's see what I can get done with an hour and some lipsum...
   right: 50px;
 }
 .arrow {
-  animation: color-animation 2s 2s 3 alternate ease-in-out forwards;
+  animation: color-animation 2s 2s 999 alternate ease-in-out forwards;
+}
+.head {
+  animation: head-animation 2s 2s 999 alternate ease-in-out forwards;
 }
 @keyframes color-animation {
-0% {
-  stroke: black
+  0% {
+    stroke: black
+  }
+  50% {
+    stroke: #800000
+  }
+  100% {
+    stroke: red
+  }
 }
-50% {
-  stroke: #800000
-}
-100% {
-  stroke: red
+@keyframes head-animation {
+  0% {
+    transform:translateY(0) rotate(0) ;
+  }
+  100% {
+    transform:rotate(90deg) translateY(-80px) ;
+  }
 }
 </style>
 <svg id="slider">
   <g class="arrow" fill="none" stroke="black">
-		<line x1="40" y1="10" x2="40" y2="80" />
-		<line x1="40" y1="80" x2="20" y2="60" />
-		<line x1="40" y1="80" x2="60" y2="60" />
+		<line x1="40" y1="0" x2="40" y2="80" />
+		<line class="head" x1="40" y1="80" x2="20" y2="60" />
+		<line class="head" x1="40" y1="80" x2="60" y2="60" />
 	</g>
 </svg>
 
