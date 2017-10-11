@@ -35,6 +35,46 @@ Maybe I'll learn a correct way to do it and update this post?
 <script>
 </script>
 <style>
+#flipper-container{
+	position: fixed;
+  top: 0%;
+  left: 50px;
+  perspective: 600px;
+  -webkit-perspective: 600px;
+  -moz-perspective: 600px;
+  animation: scroll-animation 2s 2s 999 alternate ease-in-out forwards;
+}
+#flipper {
+  width: 100%;
+  height: 100%;
+  font-size: 80px;
+  line-height: 100px;
+  transform-style: preserve-3d;
+  animation: flip-animation 2s 2s 999 alternate ease-in-out forwards;
+}
+.face {
+  position: absolute;
+  backface-visibility: hidden;
+}
+#back {
+  transform: rotateY( 180deg );
+}
+@keyframes scroll-animation {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+@keyframes flip-animation {
+  0% {
+    transform: rotateX(0deg);
+  }
+  100% {
+    transform: rotateX(180deg);
+  }
+}
 #slider{
 	position: fixed;
   top: 80px;
@@ -72,6 +112,12 @@ Maybe I'll learn a correct way to do it and update this post?
 		<line class="head-right" x1="0" y1="40" x2="20" y2="20" />
 	</g>
 </svg>
+<div id="flipper-container">
+  <div id="flipper">
+    <span id="front" class="face">↓</span>
+    <span id="back" class="face">↓</span>
+  </div>
+</div>
 
 Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.
 
