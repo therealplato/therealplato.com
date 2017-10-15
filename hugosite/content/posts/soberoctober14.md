@@ -22,8 +22,8 @@ That fourth pack contained the legendary land [Search for
 Azcanta](http://gatherer.wizards.com/Pages/Card/Details.aspx?name=Search+for+Azcanta) which is cool and valuable but not useful for my deck.
 I immediately found another player who wanted it and traded it to him in exchange for three new booster packs. 
 
-I modified my deck again, improving it with the new cards. At least I think it's an improvment - by this time, the store was closing and I
-didn't have time to play a fourth match.
+I modified my deck again, improving it with the new cards. At least I think it's an improvement - by this time, the store was closing and I
+didn't have time to play a fourth match. (edit, next day: seems improved, I won 2 and lost 0.)
 
 I forgot how exciting it is to open boosters, looking for the handful of cards worth more than the cost of the pack. Five hours gone like
 *snap*. I've already set an alarm to go back tomorrow to play that fourth match. This feels like a relapse... 
