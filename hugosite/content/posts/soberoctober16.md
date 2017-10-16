@@ -10,5 +10,5 @@ I'm getting stronger with my kettlebell. Week one was 50 swings each morning, we
 ambition of 100 swings in week 2 was ambitious. I think these counts are about right; each Monday I have felt some mild aches in lower back about 8
 hours after the workout (but no pains during or immediately after the workout), the aches are gone by Thursday.
 
-I've updated the nav bar on this site, learning the basics of CSS Flexbox in the proces. I've added previous/next links between posts, to remain visible while scrolling, and to reflow at low
-screen resolutions. Seems that modifying other people's CSS is more difficult than writing your own.
+I've updated the nav bar on this site, learning the basics of CSS Flexbox in the process. I've added previous/next links between posts, kept the nav visible while scrolling, and reflowed it at low
+screen resolutions. Seems that modifying other people's CSS is more difficult than writing your own...
