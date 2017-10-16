@@ -1,16 +1,3 @@
-{{if .Next }}
-  <a href="{{ .Next.Permalink }}" class="older-link">
-    <span class="v-mid dib">{{ partial "svg/ic_chevron_left_black_24px.svg" (dict "size" "30px") }}</span>{{ .Next.Title }} 
-  </a>
-{{end}}
-<br>
-{{if .Prev }}
-  <a href="{{.Prev.Permalink }}" class="newer-link">
-     {{ .Prev.Title }}<span class="v-mid dib">{{ partial "svg/ic_chevron_right_black_24px.svg" (dict "size" "30px") }}</span>
-  </a>
-{{end}}
-
-
 <footer id="footer">
     {{ if .Site.Social }}
         {{ partial "social.html" . }}
