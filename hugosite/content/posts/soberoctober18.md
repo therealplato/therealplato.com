@@ -33,7 +33,7 @@ The _context wherein a rule applies_ is a wide question and may get squirrely:
 * **Players of this tournament** must...
 * **Sunnis** must... **Catholics** must... **Shiites** must... **Scientologists** must... **Jews** must...
 
-I've coded the bare basics:
+I've coded the bare basics to verify my `Govern()` function's behavior:
 ```
 // rule.go
 type SimpleRule struct {
