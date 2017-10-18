@@ -28,7 +28,7 @@ My current (although frequently evolving) definition of a "rule" is:
 ```
 words dictated by a Ruler
 requiring that a Subject
-do a Behaviors
+do a Behavior
 while in a given Context
 under penalty of Consequence
 ```
