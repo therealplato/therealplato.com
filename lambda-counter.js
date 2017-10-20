@@ -36,13 +36,13 @@ exports.handler = (event, context, callback) => {
                 if(err){
                   return done(err, null)
                 }
-                var n;
+                var m;
                 if (res.Count === 0) {
-                  n = 0
+                  m = 0
                 } else {
-                  n = res.Items[0].n || 1
+                  m = res.Items[0].m || 1
                 }
-                return done(null, {n:n})
+                return done(null, {m:m})
             });
             break;
         case 'POST':
@@ -50,16 +50,26 @@ exports.handler = (event, context, callback) => {
                 if(err){
                   return done(err, null)
                 }
-                var n;
+                var n; var m;
                 if (res.Count === 0) {
                   n = 1
-                } else {
-                  n = (res.Items[0].n || 0) + 1
-                }
-                dynamo.putItem({TableName:"com-therealplato-counter",Item:{n:n}}, (err, res) =>{
+                  dynamo.putItem({TableName:"com-therealplato-counter",Item:{n:1, m:n}}, (err, res) =>{
                     if (err) {return done(err, null)}
-                    return done(null, {n:n})
-                });
+                    return done(null, {m:n})
+                  });
+                } else {
+                  m = (res.Items[0].m || 0) +1
+                  dynamo.updateItem({
+                      TableName:"com-therealplato-counter",
+                      Key:{"n":1}, 
+                      UpdateExpression:"SET m = :a",
+                      ExpressionAttributeValues: {":a": m}
+                  }, (err, res) =>{
+                    if (err) {return done(err, null)}
+                    return done(null, {m:m})
+                  });
+                }
+
             });
 
             break;
@@ -77,4 +87,3 @@ exports.handler = (event, context, callback) => {
             done(new Error(`Unsupported method "${event.httpMethod}"`));
     }
 };
-
