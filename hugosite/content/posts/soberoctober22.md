@@ -41,6 +41,13 @@ Several races have a lap count exceeding the API query limit of 1000 so I need t
 
 If I do this again I'll run local sql queries against [this docker image](https://github.com/jcnewell/ergast-f1-api) instead of wrangling JSON.
 
+*edit* This ended up taking hours of struggling with JQ. I stubbornly refused to try docker after seeing they don't release linux versions
+and Arch's requires screwing with kernel modules. The hardest bit was figuring out how to make JQ turn a sequence of objects into an array
+of those objects. It's the "slurp" flag.
+```
+cat <(cat 1999.json| jq '.MRData .RaceTable .Races[] .Laps[]') <(cat 1999.1.json| jq '.MRData .RaceTable .Races[] .Laps[]') | jq -s '.' > 1999.laps.json
+```
+
 ### Bonus Arch Linux hack:
 Since Arch comes with basically nothing, you have to install everything. And sometimes it's not obvious where it lives. I wrote an alias
 that searches Pacman's database of not-yet-installed packages for the command you're trying to find:
