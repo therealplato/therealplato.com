@@ -33,8 +33,6 @@ leave:
 destroy svg circle
 ```
 
+<div id="laptimes-container"></div>
 <script src="https://d3js.org/d3.v4.js"></script>
-<script>
-  // All D3 code goes here. For Example:
-  console.log(d3.version); // 4.7.4
-</script>
+<script src="/js/soberoctober23.js">
