@@ -1,38 +1,18 @@
 ---
-title: "#soberoctober day 23: charting f1"
+title: "#soberoctober day 23: charting f1 (barely)"
 date: 2017-10-23T12:19:02+13:00
 draft: false
 ---
+Continuing from [yesterday](/posts/soberoctober22), I've got a new hypothesis. The lap times of individual drivers will follow a sawtooth pattern throughout the race, as tires wear out and pitstops replace them with faster fresh tires. Additionally, refueling was allowed in past years. I think that the deviation between slow and fast laps will be lower in the refueling races than in post-refueling races. (Because the modern cars have to carry the whole race's worth of fuel from the start, they will show a more significant difference between early slow laps and late fast laps, than the refueling cars.)
+<hr>
+OK scratch that lol, I hoped to gain some D3 skills but instead I learned how to wrangle data. It might be a good idea to lower my expectations.
 
-Continuing from yesterday, I've got a new hypothesis. If I plot the lap times of one driver throughout a race, I think old races (when
-pitstops included 
-refueling) will show a gentle-drop-steep-climb sawtooth pattern, and new races will show a slow-climb-fast-drop pattern with lower
-amplitude. I expect this because cars are slower when they have to carry fuel, but they also get slower as tires wear out. I think for the
-old races, the fuel weight will outweigh the fresh tires.
+I spent many more hours of trial and error to combine multiple pages from the Ergast API, then extract individual lap timing data objects, and then an unholy amount of googling until I found jq's `--slurp` option to input objects and output an array wrapping them. The result was [three shell scripts and one go script](https://github.com/therealplato/therealplato.com/tree/master/suzuka/laps).
 
-D3 pseudocode:
-```
-Chart 1, fastest lap history
-## Data:
-fastest = <race, driver, lap number, lap time>
-for r in races
-  for l in r.laps
-    for d in l.drivers
-      t = d.laptime
-      if t < fastest.t; fastest = <r,d,l,t>
+Once I had data, learning elementary [d3 code](https://github.com/therealplato/therealplato.com/blob/bcc0bc3e4d692a75c26eacdc4a9f15752487818e/hugosite/static/js/soberoctober23.js) was a breeze, clocking in at only 40 minutes or so. Yes, I know it's [ugly](/images/dwi.gif).
 
-## Chart:
-line chart, year vs fastest
-hover a data point to see driver, lap number, lap time
-
-enter:
-create svg circle 
-update:
-place svg circle at tx, ty
-leave: 
-destroy svg circle
-```
-
+Historic Formula 1 Suzuka Grand Prix lap time records:
 <div id="laptimes-container"></div>
 <script src="https://d3js.org/d3.v4.js"></script>
-<script src="/js/soberoctober23.js">
+<script src="/js/soberoctober23.js"></script>
+
