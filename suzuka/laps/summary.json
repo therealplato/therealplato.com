@@ -1,0 +1,135 @@
+[
+  {
+    "year": "1996.laps.json",
+    "timeDisplay": "1:26.110",
+    "timeMilliseconds": 8611,
+    "lapNumber": "50",
+    "driver": "michael_schumacher"
+  },
+  {
+    "year": "1997.laps.json",
+    "timeDisplay": "1:18.805",
+    "timeMilliseconds": 7880,
+    "lapNumber": "32",
+    "driver": "frentzen"
+  },
+  {
+    "year": "1998.laps.json",
+    "timeDisplay": "1:25.139",
+    "timeMilliseconds": 8513,
+    "lapNumber": "45",
+    "driver": "hakkinen"
+  },
+  {
+    "year": "1999.laps.json",
+    "timeDisplay": "1:21.282",
+    "timeMilliseconds": 8128,
+    "lapNumber": "64",
+    "driver": "hakkinen"
+  },
+  {
+    "year": "2000.laps.json",
+    "timeDisplay": "1:14.711",
+    "timeMilliseconds": 7471,
+    "lapNumber": "40",
+    "driver": "coulthard"
+  },
+  {
+    "year": "2001.laps.json",
+    "timeDisplay": "1:25.073",
+    "timeMilliseconds": 8507,
+    "lapNumber": "39",
+    "driver": "ralf_schumacher"
+  },
+  {
+    "year": "2002.laps.json",
+    "timeDisplay": "1:23.657",
+    "timeMilliseconds": 8365,
+    "lapNumber": "15",
+    "driver": "barrichello"
+  },
+  {
+    "year": "2003.laps.json",
+    "timeDisplay": "1:21.832",
+    "timeMilliseconds": 8183,
+    "lapNumber": "14",
+    "driver": "michael_schumacher"
+  },
+  {
+    "year": "2004.laps.json",
+    "timeDisplay": "1:32.238",
+    "timeMilliseconds": 9223,
+    "lapNumber": "55",
+    "driver": "michael_schumacher"
+  },
+  {
+    "year": "2005.laps.json",
+    "timeDisplay": "1:12.268",
+    "timeMilliseconds": 7226,
+    "lapNumber": "29",
+    "driver": "raikkonen"
+  },
+  {
+    "year": "2006.laps.json",
+    "timeDisplay": "1:37.586",
+    "timeMilliseconds": 9758,
+    "lapNumber": "49",
+    "driver": "alonso"
+  },
+  {
+    "year": "2009.laps.json",
+    "timeDisplay": "1:48.240",
+    "timeMilliseconds": 10824,
+    "lapNumber": "53",
+    "driver": "alonso"
+  },
+  {
+    "year": "2010.laps.json",
+    "timeDisplay": "1:24.139",
+    "timeMilliseconds": 8413,
+    "lapNumber": "52",
+    "driver": "alonso"
+  },
+  {
+    "year": "2011.laps.json",
+    "timeDisplay": "1:48.454",
+    "timeMilliseconds": 10845,
+    "lapNumber": "54",
+    "driver": "button"
+  },
+  {
+    "year": "2012.laps.json",
+    "timeDisplay": "1:35.774",
+    "timeMilliseconds": 9577,
+    "lapNumber": "52",
+    "driver": "vettel"
+  },
+  {
+    "year": "2013.laps.json",
+    "timeDisplay": "1:34.587",
+    "timeMilliseconds": 9458,
+    "lapNumber": "44",
+    "driver": "webber"
+  },
+  {
+    "year": "2014.laps.json",
+    "timeDisplay": "1:40.896",
+    "timeMilliseconds": 10089,
+    "lapNumber": "53",
+    "driver": "bottas"
+  },
+  {
+    "year": "2015.laps.json",
+    "timeDisplay": "1:40.666",
+    "timeMilliseconds": 10066,
+    "lapNumber": "49",
+    "driver": "rosberg"
+  },
+  {
+    "year": "2016.laps.json",
+    "timeDisplay": "1:39.877",
+    "timeMilliseconds": 9987,
+    "lapNumber": "55",
+    "driver": "vettel"
+  }
+]

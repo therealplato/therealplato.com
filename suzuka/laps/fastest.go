@@ -95,12 +95,7 @@ func main() {
 				}
 			}
 		}
-		fmt.Printf(`{
-	year:"%s",
-	timeDisplay:"%s",
-	timeMilliseconds: %v,
-	lapNumber: "%s",
-	driver:"%s"
-}`+"\n", file, fastestTiming.Time, (fastest.Nanoseconds() / 10E6), fastestLap.Number, fastestTiming.DriverId)
+		fmt.Printf(`{ "year":"%s", "timeDisplay":"%s", "timeMilliseconds": %v, "lapNumber": "%s", "driver":"%s" }`+"\n",
+			file, fastestTiming.Time, (fastest.Nanoseconds() / 10E6), fastestLap.Number, fastestTiming.DriverId)
 	}
 }
