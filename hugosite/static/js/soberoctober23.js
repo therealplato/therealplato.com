@@ -1,5 +1,3 @@
-// All D3 code goes here. For Example:
-console.log(d3.version); // 4.7.4
 var url = "/misc/suzuka-laps.json";
 d3.json(url, function (data) {
   console.log(data)
