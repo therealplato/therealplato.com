@@ -1,5 +1,5 @@
 ---
-title: "#soberoctober day 24"
+title: "#soberoctober day 24: another mediocre chart"
 date: 2017-10-24T21:41:48+13:00
 draft: false
 ---
