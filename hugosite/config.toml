@@ -7,7 +7,7 @@ hasCJKLanguage = false
 [params]
 	name = "@therealplato"
 	description = "words about things that i think about"
-	bio = "I crossed the United States spending only Bitcoin in 2012. Now I'm a golang developer for [movio.co](https://movio.co) in Auckland."
+	bio = "I crossed the United States spending only Bitcoin in 2012. Now I'm a Go engineer."
 	# Enter optionally your twitter account
 	twitter = "@therealplato"
 	enableRSS = true
