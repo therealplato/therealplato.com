@@ -20,35 +20,35 @@ The plan:
 * Off to the side, place this code to reference parts of a turn:
 
 ```go
-func turn() {
-  beginning: {
-    untap()
-    upkeep()
-    draw()
-  }
-  main1: {
-    if !landThisTurn {
-      playLand()
-    }
-    castSpells()
-  }
-  combat: {
-    begin()
-    declareAttackers()
-    declareBlockers()
-    combatDamage()
-    end()
-  }
-  main2: {
-    if !landThisTurn {
-      playLand()
-    }
-    castSpells()
-  }
+    func turn() {
+      beginning: {
+        untap()
+        upkeep()
+        draw()
+      }
+      main1: {
+        if !landThisTurn {
+          playLand()
+        }
+        castSpells()
+      }
+      combat: {
+        begin()
+        declareAttackers()
+        declareBlockers()
+        combatDamage()
+        end()
+      }
+      main2: {
+        if !landThisTurn {
+          playLand()
+        }
+        castSpells()
+      }
 
-  end: {
-    endStep()
-    cleanupDmg()
-  }
-}
+      end: {
+        endStep()
+        cleanupDmg()
+      }
+    }
 ```

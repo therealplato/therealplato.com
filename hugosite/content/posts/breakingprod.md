@@ -4,7 +4,12 @@ date: 2019-08-07T00:00:00Z
 draft: true
 ---
 
-```
+# Breaking Production: Risk, Impact and Mitigations
+
+A hasty generalizer might categorize software into two buckets: "Works", and "Doesn't Work". They've missed an exciting middle ground:
+"Works until it doesn't."
+
+```go
 package main
 func main(){}
 
@@ -15,58 +20,100 @@ func (i code) am() string {
 // prog.go:4:9: undefined: code
 ```
 
-A hasty generalizer might categorize software into two buckets: "Works", and "Doesn't Work".  They've missed an exciting middle ground: "Works at first, then breaks."
-
-This post discusses some risk assessments and impact mitigations that engineers can use to minimize the costs of releasing broken code.
-
-####Risk
+#### Risk
 
 The code above doesn't compile and thus doesn't run. "Deploying code" includes "making it run", so we cannot successfully deploy this code.
 This is my favorite kind of failure - one that's impossible to miss. We easily evaluate its failure risk as 100%.
 
-We got lucky there. Risk is often not possible to quantify. Is the risk of a meteor taking out the server 1% a day? Certainly not! 0.000001% a day? Probably still too high, but who knows? Searching "meteor risk calculator" finds global aggregates but no obvious way to evaluate impact risk at a particular location.
+We got lucky there. Risk is often not possible to quantify. Is the risk of a meteor taking out the server 1% a day? Certainly not! 0.000001%
+a day? Probably still too high, but who knows? Searching "meteor risk calculator" finds global aggregates but no obvious way to assess
+impact risk at a particular location.
 
-In many cases, the best we can do is evaluate relative risks. On a given day, a meteor taking out the server is less likely than me deploying broken code. If my objective is to minimize the risk of the code not running, bombproofing the data center is an option, but my time is probably better spent writing better code.
+Often the best we can do is evaluate relative risks. On a given day, a meteor taking out the server is less likely than me deploying broken
+code. If my objective is to maximize uptime, bombproofing the data center is an option, but my time is probably better spent writing better
+code.
 
-An overeager and undertrained engineer might state their guess as a quantified risk. A seminal case study of risk management is the series
-of 6 massive radiation overdoses, 3 fatal, caused by software bugs in the [Therac-25 ]() radiation therapy machine. After the third
-incident, the manufacturer AECL implemented a hardware fix, and claimed that "Analysis of the hazard rate resulting from these modifications
-indicates an improvement of at least five orders of magnitude." Without good software design and a comprehensive test suite, they did not
-identify the causes of the failures, fixed the wrong thing, and patients continued to die.
+An overeager engineer might state a guess as a quantified risk. A seminal case study of risk management is the series of 6 massive radiation
+overdoses, 3 fatal, caused by software bugs in the [Therac-25 ](/misc/therac-25.pdf)[^1] radiation therapy machine. After the third incident,
+the manufacturer AECL implemented a hardware fix, and claimed that "Analysis of the hazard rate resulting from these modifications indicates
+an improvement of at least five orders of magnitude." 
 
-The more experienced engineer may still state their guess, but is careful to frame it with language that clearly explains their assumptions
-and limitations of scope. A more precise framing would have been "A risk analysis of the
-modifications shows five orders of magnitude lower risk of faulty readouts of the turntable position microswitches." It's hard to come up
-with even hypothetical math that would explain where the "five orders of magnitude" number came from, so it's entirely possible that this
-revised statement is inaccurate.
+AECL didn't show their math, and it's hard to imagine how they reached this figure. It's safe to say that their evaluation included a faulty
+assumption that the software worked as intended. 
 
-Risk assessment starts with enumerating assumptions. This matters because the risk model frequently changes if an assumption turns out to be
-wrong. The authors of the Therac-25 code assesed software failure risks to be zero. They were (incorrectly) certain that any failures must
-be hardware, and their risk assessment was based on this assumption. They were so confident that they removed hardware interlocks that the
-previous Therac-20 model used to ensure correct operation. As it turned out, the same software bugs were present in the Therac-20 code, but
-did not surface because the interlocks prevented failures. AECL should have assessed a nonzero chance that their assumption of correct code
-was faulty.
+Risk assessment requires enumerating assumptions and considering the possibility that those assumptions are faulty. This matters because the
+risk model frequently changes when an assumption turns out to be wrong. The authors of the Therac-25 code were certain that any failures
+must be hardware, and assumed that the software failure risk was zero. They were so confident that they removed hardware interlocks used in
+the previous Therac-20 model. As it turned out, the same software bugs were present in the Therac-20 code, but did not surface because the
+interlocks prevented failures. AECL's assessment should have assigned a nonzero probability to the risk that their assumption was wrong.
 
-####Impact
+Given that risk assessments involve unknowns, sometimes a guess is the best we can do. It's important to provide context that clearly
+communicate any assumptions and limitations of scope. A more precise framing of AECL's statement would have been "A risk analysis of the
+modifications shows five orders of magnitude lower risk of failure caused by incorrect readouts from the turntable position microswitches."
+Users trusted AECL's assessment, but the actual causes remained unidentified. AECL fixed the wrong thing, and patients continued to die.
 
-Evaluating failure _impact_ is always specific to the business domain. When you say "failure", do you mean "the page loads
-slowly", "we broke DNS for the western hemisphere" or "we killed the patient?" Some domains can accept a higher failure rate than others.
+#### Impact
 
+Evaluating _failure impact_ is always specific to the business domain. When you say "failure", do you mean "the page doesn't load", "we owe lots of money" or "we killed the patient?" Some domains can tolerate failure more than others.
 
-The real interesting risk evaluations happen the rest of the time, when things only _might_ go wrong.
+We can also assess _change impact_: What is the set of things that this change could break? The trivial case is changing a process that runs
+in total isolation. This change touches affects that process, so only that process could fail. The ultimate case is a change across the
+board, perhaps rewriting the whole system in a new language or replacing an omnipresent storage system. This is a high-impact change because
+it touches everything; if something goes wrong, everything could fail. As you'd expect, most changes fall in between these extremes.
 
-We have to answer, as best we can:
-- Which is it, "might" or "probably?"
+Factors worth considering when assessing impact include:
+- Physical harm
+- Person-hours spent
+- Monetary cost
+- Reputation loss
 
+As with evaluating risks, it's important to also consider how the impact changes if it turns out your assumptions are faulty.
+
+#### Risk Calculus
+I've used the term _risk calculus_ before but never formally defined it to myself. Upon reflection it's a tongue-in-cheek term because
+mathematical calculus is exact but risk is fuzzy. Let's give it a go:
+
+```
+    Failure Mode is defined as "An Incorrect Behavior"
+    Risk is defined as "Probability of a Failure Mode occurring"
+    Impact is defined as "Cost of a Failure Mode"
+
+    Do not use the system until:
+
+    The sum of (Risk * Impact) for all Failure Modes 
+      is less than
+    The benefit when zero Failure Modes occur
+      plus
+    The sum of (the benefit of each Failure Mode) for all Failure Modes
+```
+
+The benefit of a failure mode is usually limited to "we learned this failure mode exists, how to detect it and how to avoid it." In
+low-impact domains, the value of this learning experience often exceeds the costs of failure.[^2]
+
+It's up to the business to put numbers on the costs and benefits, or at least to determine relative weights. The engineers building the
+system should be willing to explain their own risk calculus if they disagree with the business's calculus. This includes scenarios where the
+engineer identifies an ethical cost that was overlooked or undervalued by the business.
+
+It's also worth reiterating that perfect information is almost never available. Assume the worst case.
+
+#### Mitigations
+without good software design and a comprehensive test suite, 
 Engineers aim to optimize tradeoffs, here, minimizing breakage as we produce correctly behaving code.
+Resilience: Code independent pieces that are unaffected by changes to other parts of the system
 
-Some approaches I've encountered:
+Some approaches I've seen:
 - Code nothing: You can't break anything
-- Don't minimize breakage: Maybe you get follow-on work to fix your bugs
+- Code poorly: Your government contract includes follow-on work to fix your bugs
 - Minimize impact: Write code that breaks gracefully
 - Minimize risk: Be really sure that it won't break
 
 We have two things to optimize for: minimizing breakage, and producing product code. "Code nothing" minimizes breakage but produces no product code. "Minimize impact" and "minimize risk" give us both reduced breakage and some code.
+
+[^1]:
+"Medical Devices: The Therac-25". Nancy Leveson, University of Washington. Via [danluu/post-mortems](https://github.com/danluu/post-mortems)
+
+[^2]:
+"Move fast and break things." Mark Zuckerberg, [Facebook IPO filing](https://www.sec.gov/Archives/edgar/data/1326801/000119312512034517/d287954ds1.htm#toc287954_10), 2012
 
 ---
 
@@ -88,3 +135,11 @@ Risk analysis of top level vendoring vs service level vendoring vs no vendoring
     Mitigations:
       testing
       gradual rollout
+      defense in depth
+
+
+The real interesting risk evaluations happen the rest of the time, when things only _might_ go wrong.
+
+We have to answer, as best we can:
+- Which is it, "might" or "probably?"
+
