@@ -1,6 +1,6 @@
 ---
 title: "Breaking Production: Risk, Impact and Mitigations"
-date: 2019-08-12T00:00:00Z
+date: 2019-08-11T00:00:00Z
 draft: false
 ---
 
@@ -32,7 +32,7 @@ Often the best we can do is evaluate relative risks - "it might happen" vs "it p
 server is less likely than me deploying problematic code. If my objective is to maximize uptime, bombproofing the data center is an option,
 but my time is probably better spent writing better code.
 
-An overeager or pressured engineer might state a guess as a quantified risk. An excellent [case study](/misc/therac-25.pdf)[^1] of risk
+An overeager or pressured engineer might state a guess as a quantified risk. An excellent [case study](/misc/therac-25.pdf) ([^1]) of risk
 management is the series of 6 massive radiation overdoses, 3 fatal, caused by software bugs in the Therac-25 radiation therapy machine.
 After the third incident, the manufacturer AECL implemented a hardware fix, and claimed that "Analysis of the hazard rate resulting from
 these modifications indicates an improvement of at least five orders of magnitude."
@@ -60,10 +60,11 @@ language or replacing an omnipresent storage system. These are high-impact chang
 everything can fail. Most changes fall in between these extremes.
 
 Factors worth considering when assessing impact include:
-- Unethical system behavior, including physical harm
-- Person-hour costs
-- Monetary costs
-- Reputation costs
+
+* Unethical system behavior, including physical harm
+* Person-hour costs
+* Monetary costs
+* Reputation costs
 
 As with evaluating risks, it's important to also consider how the impact would change if any assumptions are incorrect.
 
@@ -87,7 +88,7 @@ mathematical calculus is exact but risk is fuzzy. Let's give it a go:
 ```
 
 Benefits of failure include learning about an unknown failure mode, learning how to detect it, learning how to avoid it, identifying missing
-tests, and identifying previously unknown assumptions. The value of this learning experience often exceeds the costs of failure.[^2]
+tests, and identifying previously unknown assumptions. The value of this learning experience often exceeds the costs of failure. ([^2])
 
 It's up to the business to put numbers on the costs and benefits, or at least to assign relative weights. The engineers building and
 operating the system should be willing to explain their own risk calculus when it differs from the business's calculus. This notably
@@ -99,44 +100,42 @@ weighing them too low. Recalculate when new information becomes available.
 #### Mitigations
 
 Engineering is all about optimizing tradeoffs. In the context of risk mitigation, I've seen several approaches:
-- Code nothing: We can't break anything.
-- Code poorly: We'll get a follow-on contract to fix our bugs.
-- Minimize impact: Write code that breaks gracefully.
-- Minimize risk: Write code that has very low chance of breaking.
-- Maximize benefit: Write code that is so valuable that users tolerate breakage.
+
+* Code nothing: We can't break anything.
+* Code poorly: We'll get a follow-on contract to fix our bugs.
+* Minimize impact: Write code that breaks gracefully.
+* Minimize risk: Write code that has very low chance of breaking.
+* Maximize benefit: Write code that is so valuable that users tolerate breakage.
 
 Personally, I also value the engineering team's happiness, so I prefer a combination of minimizing impact and minimizing risk.
 
 ##### Minimize Impact
 
 Build systems that handle known failure modes, but let the engineers handle unknown failure modes:
-- Build high-availability systems with multiple replicas to minimize impact when networking or hardware problems make a service unavailable.
-- Retry after transient failures (but not indefinitely.)
-- Retry if dependencies are unavailable at system startup (but not indefinitely.)
-- Do not take zero action when an error or exception is encountered.
-- Prefer terminating the process over continuing with an inconsistent or unknown program state.
-- Use instrumentation and alerting to quickly identify failures.
+
+* Build high-availability systems with multiple replicas to minimize impact when networking or hardware problems make a service unavailable.
+* Retry after transient failures (but not indefinitely.)
+* Retry if dependencies are unavailable at system startup (but not indefinitely.)
+* Do not take zero action when an error or exception is encountered.
+* Prefer terminating the process over continuing with an inconsistent or unknown program state.
+* Use instrumentation and alerting to quickly identify failures.
 
 ##### Minimize risk
 
 Code defensively. Assume the worst and try to code around it:
-- Do not blindly assume that your code behaves as expected. Write validation or tests to confirm the behavior. Don't be afraid of checking assumptions repeatedly.
-- Do not assume that third party code behaves as expected.
-- Make services as independent as reasonably possible to minimize change risk. For instance, instead of having two services share a database
+
+* Do not blindly assume that code, whether first party or third party, behaves as expected.  Write validation or tests to confirm the
+  behavior. Don't be afraid of checking assumptions repeatedly.
+* Make services as independent as reasonably possible to minimize change risk. For instance, instead of having two services share a database
   table, give one service responsibility for maintaining that table and expose an API through which other services can use the table.
-- Gradually roll out changes that touch multiple services, rather than all at once.
-- Have a comprehensive test suite, including validating the system's behavior when errors occur or assumptions are faulty.
-- Do not use concurrency when synchronous code will do the job.
-- Do not use ten layers of indirection when one layer will do the job.
+* Gradually roll out changes that touch multiple services, rather than all at once.
+* Have a comprehensive test suite, including validating the system's behavior when errors occur or assumptions are faulty.
+* Do not use concurrency when synchronous code will do the job.
+* Do not use ten layers of indirection when one layer will do the job.
 
 The manufacturers of the Therac-25 code incorrectly calculated their risks. They were so confident in their software that they removed
 hardware interlocks used in the previous Therac-20 model. As it turned out, the same bugs were present in the Therac-20 as the Therac-25,
 but were not noticed because the interlocks prevented accidents. Do not mistake absence of evidence for evidence of absence.
 
----
-
-[^1]:
-1: "Medical Devices: The Therac-25". Nancy Leveson, University of Washington. Via [danluu/post-mortems](https://github.com/danluu/post-mortems)
-
-[^2]:
-2: "Move fast and break things." Mark Zuckerberg, [Facebook IPO filing](https://www.sec.gov/Archives/edgar/data/1326801/000119312512034517/d287954ds1.htm#toc287954_10), 2012
+[^1]: "Medical Devices: The Therac-25". Nancy Leveson, University of Washington. Via [danluu/post-mortems](https://github.com/danluu/post-mortems)
+[^2]: "Move fast and break things." Mark Zuckerberg, [Facebook IPO filing](https://www.sec.gov/Archives/edgar/data/1326801/000119312512034517/d287954ds1.htm#toc287954_10), 2012

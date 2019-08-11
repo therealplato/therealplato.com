@@ -5,7 +5,7 @@ TMP=$P/tmpgit
 mv $OUT/.git $TMP
 mv $OUT/CNAME .
 rm -rf $OUT/*
-hugo -s hugosite -d $OUT
+hugo -v -s hugosite -d $OUT
 touch $OUT/.nojekyll
 mv $TMP $OUT/.git
 mv CNAME $OUT/CNAME
