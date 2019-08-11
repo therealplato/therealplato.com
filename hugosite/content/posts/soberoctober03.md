@@ -10,5 +10,5 @@ A colleague has joined the #soberoctober challenge.
 
 ## Today's achievements:
 * Learned how [SPF](https://en.wikipedia.org/wiki/Sender_Policy_Framework) works
-* Deployed this blog to [therealplato.github.io](https://therealplato.github.io) and [therealplato.com](http://therealplato.com)
+* Deployed this blog to [therealplato.github.io](https://therealplato.github.io) and [therealplato.com](https://therealplato.com)
 * Earned "Banker" and "Thermalist" awards in *Terraforming Mars*, didn't win

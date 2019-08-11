@@ -1,4 +1,4 @@
-baseURL = "http://therealplato.com/"
+baseURL = "https://therealplato.com/"
 languageCode = "en-us"
 title = "therealplato.com"
 theme = "hugo-theme-cactus-plus"
