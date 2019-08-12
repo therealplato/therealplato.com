@@ -111,9 +111,9 @@ Personally, I also value the engineering team's happiness, so I prefer a combina
 
 ##### Minimize Impact
 
-Build systems that handle known failure modes, but let the engineers handle unknown failure modes:
+Build systems that have code paths for known failure modes, but let the engineers handle unknown failure modes:
 
-* Build high-availability systems with multiple replicas to minimize impact when networking or hardware problems make a service unavailable.
+* Use high-availability designs with multiple replicas to minimize impact when networking or hardware problems make a service unavailable.
 * Retry after transient failures (but not indefinitely.)
 * Retry if dependencies are unavailable at system startup (but not indefinitely.)
 * Do not take zero action when an error or exception is encountered.
@@ -124,14 +124,15 @@ Build systems that handle known failure modes, but let the engineers handle unkn
 
 Code defensively. Assume the worst and try to code around it:
 
-* Do not blindly assume that code, whether first party or third party, behaves as expected.  Write validation or tests to confirm the
-  behavior. Don't be afraid of checking assumptions repeatedly.
+* Do not blindly assume that code, whether first party or third party, behaves as expected. Verify its behavior with tests and/or runtime
+  checks. Don't be afraid of checking assumptions repeatedly.
+* Have a comprehensive test suite. Put more time into testing failure cases than success cases, including tests that validate the system
+  fails as planned when assumptions are faulty.
 * Make services as independent as reasonably possible to minimize change risk. For instance, instead of having two services share a database
   table, give one service responsibility for maintaining that table and expose an API through which other services can use the table.
 * Gradually roll out changes that touch multiple services, rather than all at once.
-* Have a comprehensive test suite, including validating the system's behavior when errors occur or assumptions are faulty.
-* Do not use concurrency when synchronous code will do the job.
-* Do not use ten layers of indirection when one layer will do the job.
+* Do not use concurrency when synchronous code is an option.
+* Do not use ten layers of indirection when two layers will be maintainable.
 
 The manufacturers of the Therac-25 code incorrectly calculated their risks. They were so confident in their software that they removed
 hardware interlocks used in the previous Therac-20 model. As it turned out, the same bugs were present in the Therac-20 as the Therac-25,

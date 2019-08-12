@@ -3,8 +3,9 @@ languageCode = "en-us"
 title = "therealplato.com"
 theme = "hugo-theme-cactus-plus"
 hasCJKLanguage = false
-pygmentsCodeFences = false
+pygmentsCodeFences = true
 pygmentsCodeFencesGuessSyntax = false
+pygmentsStyle = "github"
 
 [params]
 	name = "@therealplato"
