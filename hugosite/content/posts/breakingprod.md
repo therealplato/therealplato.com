@@ -1,6 +1,6 @@
 ---
 title: "Breaking Production: Risk, Impact and Mitigations"
-date: 2019-08-11T00:00:00Z
+date: 2019-08-12T00:00:00Z
 draft: false
 ---
 
@@ -91,20 +91,22 @@ Benefits of failure include learning about an unknown failure mode, learning how
 tests, and identifying previously unknown assumptions. The value of this learning experience often exceeds the costs of failure. ([^2])
 
 It's up to the business to put numbers on the costs and benefits, or at least to assign relative weights. The engineers building and
-operating the system should be willing to explain their own risk calculus when it differs from the business's calculus. This notably
-includes scenarios where an engineer identifies an ethical impact that was overlooked or undervalued by the business.
+operating the system should explain their own risk calculus when it differs from the business's calculus. This notably includes scenarios
+where an engineer identifies an ethical impact that was overlooked or undervalued by the business. If no acceptable mitigation is found,
+refusing to participate in the project may be the most ethical option available.
 
-It's also worth reiterating that perfect information is almost never available. Weighing risks and impacts higher than reality is safer than
-weighing them too low. Recalculate when new information becomes available.
+It's also worth reiterating that perfect information is almost never available. Weighing risks and impacts higher than their reality is
+safer than weighing them too low, but be aware of the trap of trying to _eliminate_ risks rather than _mitigate_ them: at some point, the
+time and effort spent exceeds the costs of failure. Reassess the risk calculus as new information becomes available.
 
 #### Mitigations
 
-Engineering is all about optimizing tradeoffs. In the context of risk mitigation, I've seen several approaches:
+Engineering is all about optimizing tradeoffs. I've seen several approaches to risk mitigation:
 
 * Code nothing: We can't break anything.
 * Code poorly: We'll get a follow-on contract to fix our bugs.
 * Minimize impact: Write code that breaks gracefully.
-* Minimize risk: Write code that has very low chance of breaking.
+* Minimize risk: Write code that will almost certainly not break.
 * Maximize benefit: Write code that is so valuable that users tolerate breakage.
 
 Personally, I also value the engineering team's happiness, so I prefer a combination of minimizing impact and minimizing risk.
@@ -134,9 +136,9 @@ Code defensively. Assume the worst and try to code around it:
 * Do not use concurrency when synchronous code is an option.
 * Do not use ten layers of indirection when two layers will be maintainable.
 
-The manufacturers of the Therac-25 code incorrectly calculated their risks. They were so confident in their software that they removed
-hardware interlocks used in the previous Therac-20 model. As it turned out, the same bugs were present in the Therac-20 as the Therac-25,
-but were not noticed because the interlocks prevented accidents. Do not mistake absence of evidence for evidence of absence.
+The manufacturers of the Therac-25 incorrectly calculated their risks. They were so confident in their software that they removed hardware
+interlocks used in the previous Therac-20 model. As it turned out, the same bugs were present in the Therac-20 as the Therac-25, but were
+not noticed because the interlocks prevented accidents. Do not mistake absence of evidence for evidence of absence.
 
 [^1]: "Medical Devices: The Therac-25". Nancy Leveson, University of Washington. Via [danluu/post-mortems](https://github.com/danluu/post-mortems)
 [^2]: "Move fast and break things." Mark Zuckerberg, [Facebook IPO filing](https://www.sec.gov/Archives/edgar/data/1326801/000119312512034517/d287954ds1.htm#toc287954_10), 2012
