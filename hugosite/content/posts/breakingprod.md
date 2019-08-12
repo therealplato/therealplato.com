@@ -141,4 +141,4 @@ interlocks used in the previous Therac-20 model. As it turned out, the same bugs
 not noticed because the interlocks prevented accidents. Do not mistake absence of evidence for evidence of absence.
 
 [^1]: "Medical Devices: The Therac-25". Nancy Leveson, University of Washington. Via [danluu/post-mortems](https://github.com/danluu/post-mortems)
-[^2]: "Move fast and break things." Mark Zuckerberg, [Facebook IPO filing](https://www.sec.gov/Archives/edgar/data/1326801/000119312512034517/d287954ds1.htm#toc287954_10), 2012
+[^2]: "Move fast and break things." Mark Zuckerberg, [Facebook IPO filing](https://www.sec.gov/Archives/edgar/data/1326801/000119312512034517/d287954ds1.htm), 2012
